@@ -1,18 +1,17 @@
 "use client";
 
-import {
-  configureStore,
-  createAsyncThunk,
-  getDefaultMiddleware,
-} from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "./feature/counter/counterSlice";
-import thunk from "redux-thunk"; // Import Thunk middleware
+import productsSlice from "./products/productsSlice";
 
-const middleware = [...getDefaultMiddleware(), thunk];
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
-    middleware,
+    products: productsSlice,
+  },
+  middleware: (getDefaultMiddleware) => {
+    // Customize middleware here if needed
+    return getDefaultMiddleware();
   },
 });
 

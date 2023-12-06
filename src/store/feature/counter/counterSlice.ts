@@ -4,14 +4,14 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export interface CounterState {
   value: number;
-  userData: any;
+  products: any;
   loading: boolean;
   error: string | undefined | null;
 }
 
 const initialState: CounterState = {
   value: 0,
-  userData: null,
+  products: null,
   loading: false,
   error: null,
 };
@@ -21,7 +21,7 @@ export const fetchUserData = createAsyncThunk(
   "user/fetchUserData",
   async () => {
     // Perform an API call or asynchronous operation
-    const response = await fetch("https://api.example.com/users");
+    const response = await fetch("https://dummyjson.com/products");
     const data = await response.json();
     return data;
   }
@@ -48,7 +48,7 @@ export const counterSlice = createSlice({
     });
     builder.addCase(fetchUserData.fulfilled, (state, action) => {
       state.loading = false;
-      state.userData = action.payload;
+      state.products = action.payload;
     });
     builder.addCase(fetchUserData.rejected, (state, action) => {
       state.loading = false;
