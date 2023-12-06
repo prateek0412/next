@@ -1,14 +1,31 @@
 "use client";
 
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export interface CounterState {
   value: number;
+  userData: any;
+  loading: boolean;
+  error: string | undefined | null;
 }
 
 const initialState: CounterState = {
   value: 0,
+  userData: null,
+  loading: false,
+  error: null,
 };
+
+// Async action using Thunk
+export const fetchUserData = createAsyncThunk(
+  "user/fetchUserData",
+  async () => {
+    // Perform an API call or asynchronous operation
+    const response = await fetch("https://api.example.com/users");
+    const data = await response.json();
+    return data;
+  }
+);
 
 export const counterSlice = createSlice({
   name: "counter",
@@ -23,6 +40,20 @@ export const counterSlice = createSlice({
     incrementByAmount: (state, action) => {
       state.value += action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    // Add reducers for handling the async action lifecycle
+    builder.addCase(fetchUserData.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(fetchUserData.fulfilled, (state, action) => {
+      state.loading = false;
+      state.userData = action.payload;
+    });
+    builder.addCase(fetchUserData.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error.message;
+    });
   },
 });
 
