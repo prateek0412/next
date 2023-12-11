@@ -17,10 +17,10 @@ const Home: React.FC = () => {
   return (
     <>
       <h1>Welcome to counter App</h1>
-      <button onClick={() => dispatch(increment())}>Increment</button>
-      <span>{count}</span>
-      <button onClick={() => dispatch(decrement())}>Decrement</button>
-      <button onClick={() => dispatch(incrementByAmount(2))}>
+      <button data-testid="increment" onClick={() => dispatch(increment())}>Increment</button>
+      <span data-testid="count">{count}</span>
+      <button data-testid="decrement" onClick={() => dispatch(decrement())}>Decrement</button>
+      <button data-testid="increment-by-two" onClick={() => dispatch(incrementByAmount(2))}>
         Increment by two
       </button>
     </>
