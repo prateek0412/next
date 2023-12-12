@@ -2,6 +2,8 @@
 import { ProductDetail } from "@/store/products/productsSlice";
 import { RootState } from "@/store/store";
 import { useSelector } from "react-redux";
+import Image from 'next/image';
+
 const ProductsTable: React.FC = () => {
   const products = useSelector((state: RootState) => state.products);
   return (
@@ -17,7 +19,7 @@ const ProductsTable: React.FC = () => {
   );
 };
 
-const Product: React.FC<ProductDetail> = (props) => {
+export const Product: React.FC<ProductDetail> = (props) => {
   // const products = useSelector((state: RootState) => state.products);
   return (
     <div
@@ -32,8 +34,9 @@ const Product: React.FC<ProductDetail> = (props) => {
         borderRadius: "8px",
       }}
     >
+      
       <p>{props.brand}</p>
-      <img src={props.images[0]} style={{ width: "100%" }} />
+      <Image src={props.images[0]} width={100} height={150} alt="product-image" />
     </div>
   );
 };
