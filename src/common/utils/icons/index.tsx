@@ -18,3 +18,9 @@ export const FlagIconSvg: React.FC<IconSvgProps> = (props: IconSvgProps) => (
     />
   </svg>
 );
+
+// line 9 to 16 wrapper
+// fonts & svg icons
+// file naming [], () to keep some files private via route navigation
+// hoc => move to ui? tsx & ts => separator
+
