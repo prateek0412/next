@@ -8,10 +8,11 @@ export default function Home() {
   // }, [dispatch]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <div style={{display:'flex', flexDirection:'column', alignItems:'center', fontSize:'28px', fontFamily:'cursive'}}>
       Root Page Please select App choice
       <Link href={"counterApp"}>Counter App</Link>
       <Link href={"dashboard"}>Dashboard</Link>
-    </main>
+      <Link href={"to-do-app"}>To-Do App</Link>
+    </div>
   );
 }
