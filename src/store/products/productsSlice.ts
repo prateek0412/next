@@ -29,7 +29,8 @@ const initialState: {
 // Async action using Thunk
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
-  async () => {
+  async (_, thunkAPI) => {
+    // intercept here before API hits using thunkAPI.getState()
     // Perform an API call or asynchronous operation
     const response = await fetch("https://dummyjson.com/products");
     const data = await response.json();
