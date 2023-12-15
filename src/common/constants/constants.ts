@@ -7,5 +7,4 @@ export enum UI_TEXT {
   THIS_IS_COUNTER_APP = 'This is Counter App',
   WELCOME_TO_DASHBOARD = 'Welcome to Dashboard',
   PLEASE_WAIT_PRODUCT_IS_LOADING = 'Please wait product is being loaded....',
-  // Add more languages as needed
 }
