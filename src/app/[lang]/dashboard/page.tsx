@@ -12,7 +12,6 @@ const Home: React.FC = ({ params }: any) => {
   const dispatch = useDispatch<AppDispatch>();
   const t = getDictionary(params.lang);
   useEffect(() => {
-    // dispatch(fetchUserData());
     dispatch(fetchProducts());
   }, [dispatch]);
 

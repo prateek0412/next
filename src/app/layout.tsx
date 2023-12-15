@@ -3,14 +3,10 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { Providers } from '../store/provider';
 
-import { setGlobalState, getGlobalState } from '../store/serverSideState';
+import { setGlobalState } from '../store/serverSideState';
 import { GlobalKeys, Language } from '../types/global.types';
 
 const inter = Inter({ subsets: ['latin'] });
-
-// export async function generateStaticParams() {
-//   return [{ lang: 'en-US' }, { lang: 'nl' }];
-// }
 
 export const metadata: Metadata = {
   title: 'Create Next App',
