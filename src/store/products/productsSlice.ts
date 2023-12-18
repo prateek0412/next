@@ -58,6 +58,4 @@ export const productsSlice = createSlice({
   },
 });
 
-// export const { increment, decrement, incrementByAmount } = counterSlice.actions;
-
 export default productsSlice.reducer; // counterReducer
