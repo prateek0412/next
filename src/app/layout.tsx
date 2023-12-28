@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html>
       <Providers>
-        <body className={inter.className}>{children}</body>
+        <body>{children}</body>
       </Providers>
     </html>
   );

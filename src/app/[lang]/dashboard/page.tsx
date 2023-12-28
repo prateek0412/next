@@ -7,6 +7,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getDictionary } from '../../../dictionaries/dictionaries';
 import useAuth from '@/redux/auth/useAuth';
+import Authentication from '@/ui/components/authentication';
 
 const Home: React.FC = ({ params }: any) => {
   const { isAuthenticated, logout } = useAuth();
@@ -24,30 +25,33 @@ const Home: React.FC = ({ params }: any) => {
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
-    >
-      <h1>{t[UI_TEXT.WELCOME_TO_DASHBOARD]}</h1>
-      {isAuthenticated && <button onClick={handleLogout}>Logout</button>}
+    <>
+      <Authentication/>
       <div
         style={{
           display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'space-around',
-          gap: '3px',
+          flexDirection: 'column',
+          alignItems: 'center',
         }}
       >
-        {products.loading ? (
-          <h3>{t[UI_TEXT.PLEASE_WAIT_PRODUCT_IS_LOADING]}</h3>
-        ) : (
-          <ProductsTable />
-        )}
+        <h1>{t[UI_TEXT.WELCOME_TO_DASHBOARD]}</h1>
+        {isAuthenticated && <button onClick={handleLogout}>Logout</button>}
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'space-around',
+            gap: '3px',
+          }}
+        >
+          {products.loading ? (
+            <h3>{t[UI_TEXT.PLEASE_WAIT_PRODUCT_IS_LOADING]}</h3>
+          ) : (
+            <ProductsTable />
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
